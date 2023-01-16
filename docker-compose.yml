@@ -1,0 +1,61 @@
+services: 
+  db:
+    image: mariadb:10.6.4-focal
+    container_name: db
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes: 
+      - db_data:/var/lib/mysql
+    restart: always
+    env_file: .env
+    environment: 
+      - MYSQL_DATABASE=deploy_docker_wordpress
+    expose: 
+      - 3306
+      - 33060
+    ports:
+      - 3306:3306
+    networks: 
+      - app-network
+
+  wordpress: 
+    image: wordpress:6.1.1-fpm-alpine
+    container_name: wordpress
+    depends_on:
+      - db
+    env_file: .env
+    volumes:
+      - ./wp_data:/var/www/html
+    restart: always
+    ports: 
+      - "9000:9000"
+    environment:
+      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_USER=$MYSQL_USER
+      - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
+      - WORDPRESS_DB_NAME=deploy_docker_wordpress
+    networks: 
+      - app-network
+  
+  webserver: 
+    depends_on: 
+      - wordpress
+    image: nginx:1.23.3-alpine
+    container_name: webserver
+    restart: unless-stopped
+    ports: 
+      - "80:80"
+      - "443:443"
+    volumes: 
+      - ./wp_data:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+    networks:
+      - app-network
+    
+  
+volumes:
+  db_data:
+  wp_data:
+
+networks: 
+  app-network: 
+    driver: bridge
