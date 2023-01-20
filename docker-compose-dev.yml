@@ -1,0 +1,6 @@
+services: 
+  db:
+    env_file: .env
+  
+  wordpress:
+    env_file: .env
