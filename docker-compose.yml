@@ -22,8 +22,8 @@ services:
     depends_on:
       - db
     volumes:
-      - wp_data:/var/www/html
-      - ./wp_content:/var/www/html/wp-content:ro
+      - wp_data:/var/www/html:ro
+      - ./wp_content:/var/www/html/wp-content
     restart: always
     ports: 
       - "9000:9000"
@@ -46,7 +46,6 @@ services:
       - "443:443"
     volumes: 
       - wp_data:/var/www/html
-      - ./nginx-conf:/etc/nginx/conf.d
     networks:
       - app-network
   

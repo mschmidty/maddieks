@@ -4,3 +4,7 @@ services:
   
   wordpress:
     env_file: .env
+  
+  webserver: 
+    volumes:
+      - ./nginx-conf/dev:/etc/nginx/conf.d:ro

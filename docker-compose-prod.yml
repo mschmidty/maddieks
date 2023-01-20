@@ -4,3 +4,19 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  webserver: 
+    volumes: 
+      - certbot-etc:/etc/letsencrypt
+      - ./nginx-conf/prod:/etc/nginx/conf.d
+    
+  certbot:
+    depends_on:
+      - webserver
+    image: certbot/certbot
+    container_name: certbot
+    volumes: 
+      - certbot-etc:/etc/letsencrypt
+      - wp_data:/var/www/html
+    command: certonly --webroot --webroot-path=/var/www/html --email mschmidty@gmail.com --agree-tos --no-eff-email --staging -d mikeschmidty.com -d www.mikeschmidty.com
+volumes: 
+  certbot-etc:
