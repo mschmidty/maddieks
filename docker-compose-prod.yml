@@ -17,6 +17,6 @@ services:
     volumes: 
       - certbot-etc:/etc/letsencrypt
       - wp_data:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email mschmidty@gmail.com --agree-tos --no-eff-email --staging -d mikeschmidty.com -d www.mikeschmidty.com
+    command: certonly --webroot --webroot-path=/var/www/html --email mschmidty@gmail.com --agree-tos --no-eff-email --force-renewal -d mikeschmidty.com -d www.mikeschmidty.com
 volumes: 
   certbot-etc:
