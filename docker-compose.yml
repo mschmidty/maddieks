@@ -7,7 +7,7 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     environment: 
-      - MYSQL_DATABASE=deploy_docker_wordpress
+      - MYSQL_DATABASE=${MYSQL_DB_NAME}
     expose: 
       - 3306
       - 33060
@@ -22,8 +22,8 @@ services:
     depends_on:
       - db
     volumes:
-      - wp_data:/var/www/html:ro
-      - ./wp_content:/var/www/html/wp-content
+      - wp_data:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
     restart: always
     ports: 
       - "9000:9000"
@@ -31,7 +31,7 @@ services:
       - WORDPRESS_DB_HOST=db:3306
       - WORDPRESS_DB_USER=${MYSQL_USER}
       - WORDPRESS_DB_PASSWORD=${MYSQL_PASSWORD}
-      - WORDPRESS_DB_NAME=deploy_docker_wordpress
+      - WORDPRESS_DB_NAME=${MYSQL_DB_NAME}
     networks: 
       - app-network
   
@@ -41,18 +41,18 @@ services:
     image: nginx:1.23.3-alpine
     container_name: webserver
     restart: unless-stopped
-    ports: 
-      - "80:80"
-      - "443:443"
     volumes: 
       - wp_data:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
     networks:
       - app-network
+    ports: 
+      - "3000:80"
   
 volumes:
   db_data:
-  wp_content:
   wp_data:
+  wp_content:
 
 networks: 
   app-network: 

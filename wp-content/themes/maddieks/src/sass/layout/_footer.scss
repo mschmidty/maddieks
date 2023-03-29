@@ -1,0 +1,26 @@
+.site-footer .site-info{
+  
+  border-top: $line-border;
+  display: flex;
+  justify-content: space-between;
+  >div, >a{
+    padding: $gutter-width-desktop/2 $gutter-width-desktop;
+    color: $black;
+    text-decoration: none;
+    background: $secondary-color;
+    font-size: 0.8rem;
+    a {
+      color:$black;
+      text-decoration: none;
+      font-weight:bold;
+    }
+  }
+  >a {
+    border-right: $line-border;
+    font-weight: bold;
+  }
+  >div{
+    border-left: $line-border;
+  }
+
+}

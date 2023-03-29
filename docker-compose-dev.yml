@@ -7,4 +7,4 @@ services:
   
   webserver: 
     volumes:
-      - ./nginx-conf/dev:/etc/nginx/conf.d:ro
+      - ./nginx-conf/dev:/etc/nginx/conf.d
