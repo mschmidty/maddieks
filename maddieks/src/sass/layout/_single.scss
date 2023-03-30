@@ -1,0 +1,184 @@
+.single{
+  article {
+    margin-bottom: 0;
+    position: relative;
+  }
+  .entry-header {
+    text-align:center;
+    font-weight: 800;
+    font-size: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .entry-meta {
+    padding: 0;
+    margin-bottom: $gutter-width-desktop;
+    a {
+      color: $black;
+    }
+    >span{
+      border: $line-border;
+      background: $secondary-color;
+    }
+    >*{
+      padding: $gutter-width-desktop/3;
+      font-size: 0.8rem;
+    }
+    .posted-on{
+      a {
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+  }
+  .post-thumbnail img {
+    display:block;
+  }
+  .entry-content {
+    position:relative;
+    width: calc(100% - #{$gutter-width-desktop*2}); 
+    max-width: 700px; 
+    margin: 0 auto;
+    // padding: $gutter-width-desktop/2 $gutter-width-desktop;
+    p {
+      max-width: 100%;
+    }
+  }
+  .entry-footer {
+    border-top: $line-border;
+  }
+  .post-navigation {
+    margin-bottom: 0;
+  }
+  .nav-links {
+    a{
+      padding: $gutter-width-desktop/2 $gutter-width-desktop;
+      border-right: $line-border;
+      border-left: $line-border;
+      display:inline-block;
+      background: $secondary-color;
+      color: $black;
+      text-decoration: none;
+    }
+    .nav-subtitle {
+      font-weight: bold;
+    }
+  }
+}
+.comments-area {
+  border-top: $line-border;
+  border-bottom: $line-border;
+  padding: $gutter-width-desktop;
+  h2 {
+    margin: 0;
+    padding: $gutter-width-desktop;
+    border: $line-border;
+  }
+  .comment-list {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  article.comment-body {
+    border: $line-border;
+    margin-bottom: $gutter-width-desktop;
+    footer{
+      border-bottom: $line-border;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .comment-author {
+      border-right: $line-border;
+      display:flex;
+      align-items:center;
+      a{
+        color: $black;
+      }
+      img {
+        height: 100%;
+        width: 57px;
+        position: relative; 
+        display: block;
+        border-right: $line-border;
+      }
+    }
+    .fn {
+      padding-left: $gutter-width-desktop/2;
+    }
+    .says{
+      padding: $gutter-width-desktop/2 $gutter-width-desktop/2 $gutter-width-desktop/2 $gutter-width-desktop/4;
+      display: inline-block;
+      }
+    .comment-metadata {
+      display:flex;
+    }
+    .comment-metadata >a, .edit-link {
+      margin: 0; 
+      padding: $gutter-width-desktop/2;
+      border-left: $line-border;
+      background: $secondary-color;
+      color: $black;
+      text-decoration: none;
+      a {
+        color: $black;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    }
+    &:first-of-type{
+      margin-top: $gutter-width-desktop;
+    }
+    .comment-content {
+      padding: $gutter-width-desktop/2;
+      border-bottom: $line-border;
+      p:first-of-type{
+        margin-top: 0;
+      }
+      p:last-of-type{
+        margin-bottom: 0;
+      }
+    }
+  }
+  .reply {
+    display:flex;
+    justify-content: flex-end;
+    a{
+      padding: $gutter-width-desktop/2;
+      display:inline-block;
+      color: $black;
+      background: $primary-color;
+      border-left: $line-border;
+    }
+  }
+  .comment-respond {
+    border: $line-border;
+    .comment-reply-title {
+      margin: 0;
+      padding: $gutter-width-desktop/2;
+      border-bottom: $line-border;
+    }
+    .logged-in-as {
+      margin: 0;
+      padding: $gutter-width-desktop/2;
+      border-bottom: $line-border;
+    }
+    .comment-form-comment {
+      margin: 0;
+      label{
+        padding: $gutter-width-desktop/2;
+        display:block;
+      }
+      textarea {
+        padding: $gutter-width-desktop/2;
+        border: $line-border;
+        border-left: none;
+        border-radius: 0;
+      }
+    }
+    .form-submit {
+      margin: 0;
+      padding: $gutter-width-desktop/2;
+    }
+
+  }
+}
