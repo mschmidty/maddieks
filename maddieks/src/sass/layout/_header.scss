@@ -19,16 +19,16 @@
     display:grid;
     grid-template-columns: 1fr  min-content;
     align-items: center;
-  }
-  #block-6 {
-    margin-bottom: 0;
-    padding: 0 $gutter-width-desktop;
-    input {
-      font-family: $b-font;
-      font-size: 1rem;
-      line-height: 1rem;
-      border: none;
-      font-weight: bold;
+    .widget{
+      margin-bottom: 0;
+      padding: 0 $gutter-width-desktop;
+      input {
+        font-family: $b-font;
+        font-size: 1rem;
+        line-height: 1rem;
+        border: none;
+        font-weight: bold;
+      }
     }
   }
   #site-navigation {
