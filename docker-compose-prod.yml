@@ -1,25 +1,26 @@
-services: 
+services:
   db:
-    environment: 
+    environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
   webserver:
-    ports: 
+    ports:
       - "80:80"
       - "443:443"
-    volumes: 
+    volumes:
       - certbot-etc:/etc/letsencrypt
       - ./nginx-conf/prod:/etc/nginx/conf.d
-    
+
   certbot:
     depends_on:
       - webserver
     image: certbot/certbot
     container_name: certbot
-    volumes: 
+    volumes:
       - certbot-etc:/etc/letsencrypt
       - wp_data:/var/www/html
     command: certonly --webroot --webroot-path=/var/www/html --email mschmidty@gmail.com --agree-tos --no-eff-email --force-renewal -d maddie-ks.com -d www.maddie-ks.com
-volumes: 
+
+volumes:
   certbot-etc:
