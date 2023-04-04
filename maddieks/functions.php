@@ -197,3 +197,8 @@ function custom_excerpt_more( $more ) {
   return '...'; // Change this to the desired text or HTML markup
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
+
+
+@ini_set( 'upload_max_size' , '256M' );
+@ini_set( 'post_max_size', '256M');
+@ini_set( 'max_execution_time', '300' );

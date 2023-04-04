@@ -11,7 +11,10 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - ./nginx-conf/prod:/etc/nginx/conf.d
-
+  wordpress:
+    volumes:
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./php.ini:/usr/local/etc/php/php.ini
   certbot:
     depends_on:
       - webserver
