@@ -19,8 +19,8 @@ services:
       - wp_data:/var/www/html
       - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
       - ./themes/maddieks:/var/www/html/wp-content/themes/maddieks  # Mount your theme
-      # - ./20251002/uploads:/var/www/html/wp-content/uploads
-      # - ./20251002/plugins:/var/www/html/wp-content/plugins
+      # - ./backups/20251002/uploads:/var/www/html/wp-content/uploads
+      # - ./backups/20251002/plugins:/var/www/html/wp-content/plugins
       # - ./wp-config.php:/var/www/html/wp-config.php
     networks:
       - maddieks_wp_network
@@ -35,7 +35,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql  # Persist database data
-      - ./20251002/db:/docker-entrypoint-initdb.d
+      - ./backups/20251002/db:/docker-entrypoint-initdb.d
     networks:
       - maddieks_wp_network
 
